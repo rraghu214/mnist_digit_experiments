@@ -55,7 +55,5 @@ class Net(nn.Module):
 
 def get_optimizer_and_scheduler(model, train_loader_len, EPOCHS,lr=0.05, momentum=0.9,):
     optimizer = torch.optim.SGD(model.parameters(), lr=lr, momentum=momentum,weight_decay=1e-4)
-    # optimizer = torch.optim.Adam(model.parameters(), lr=0.002)
-    # scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=2, verbose=True)
     scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, max_lr=0.05, steps_per_epoch=train_loader_len, epochs=EPOCHS, anneal_strategy='linear')
     return optimizer, scheduler
