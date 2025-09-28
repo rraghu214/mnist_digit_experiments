@@ -3,9 +3,9 @@
 | **Model** | **Target** | **Results** |  |  | **Analysis** | **Logs** |
 |-----------|------------|-------------|----|----|--------------|------------------|
 |           |            | **Parameters** | **Best Training Accuracy** | **Best Testing Accuracy** |              |                  |
-| **Model 1** | 1. Skeleton code, 15 epochs <br> 2. Stable model (no overfitting) | **18,422** | **99.28%** | **99.16%** | 1. Consistently improving learning <br> 2. Accuracy > 99% <br> 3. Can reduce params to ~8K | [Logs-Model1](./Logs-Model1.log)  |
-| **Model 2** | 1. Reduce params to ~8K <br> 2. Remove FC <br> 3. Use GAP <br> 4. Optimizer → SGD | **8,682** | **99.55%** | **98.70%** | 1. Slight overfitting <br> 2. Test accuracy dropped <99% <br> 3. Needs tuning to hit 99.4% | [Logs-Model2](./Logs-Model2.log) |
-| **Model 3** | 1. Improve accuracy <br> 2. Use OneCycleLR <br> 3. Add more transforms (RandomAffine etc.) | **8,054** | **98.53%** | **99.13%** | 1. Params reduced from 8682 → 8054 <br> 2. **Performance improved greatly. Model able to touch 99.39% test accuracy** <br> 3. Last 4 epochs consistently >99.26% <br> Learnt about OneCycleLR and its usage with SGD. | [Logs-Model3](./Logs-Model3.log) |
+| **Model 1** | 1. ✅ Build a base skeleton model <br> 2.  ✅ Run 15 epochs <br> 3. ✅ Check stability (no overfitting) | **18,422** | **99.28%** | **99.16%** | 1. ✔ Stable training, no overfitting <br> 2. ✔ Accuracy crossed 99% <br> 3. ❌ Too many parameters, can be reduced | [Logs-Model1](./Logs-Model1.log)  |
+| **Model 2** | 1. ✅ Cut down params to ~8K <br> 2. ✅ Remove fully connected layer <br> 3. ✅ Use GAP for output <br> 4. ✅ Train with SGD only | **8,682** | **98.55%** | **98.70%** | 1. ✔ Parameters reduced successfully <br> 2. ❌ Accuracy dropped below 99% <br> 3. ❌ Mild overfitting seen <br> 4. → Needs more tuning to reach 99.4% | [Logs-Model2](./Logs-Model2.log) |
+| **Model 3** | 1. ✅ Push test accuracy closer to 99.4% <br> 2. ✅ Try OneCycleLR for better learning rate scheduling <br> 3. ✅ Use stronger data augmentation (RandomAffine, etc.) | **8,054** | **98.76%** | **99.38%** | 1. ✔ Parameters reduced further (8682 → 8054) <br> 2. **✔ Accuracy improved significantly (up to 99.38%)** <br> 3. ✔ Last 4 epochs consistently >99.26% <br> 4. ✔ OneCycleLR + SGD proved effective | [Logs-Model3](./Logs-Model3.log) |
 
 
 # Model-3
