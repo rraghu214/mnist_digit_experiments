@@ -49,13 +49,14 @@ if cuda:
     torch.cuda.manual_seed(SEED)
 
 # dataloader arguments - something you'll fetch these from cmdprmt
-dataloader_args = dict(shuffle=True, batch_size=64, num_workers=0, pin_memory=True) if cuda else dict(shuffle=True, batch_size=64)
+dataloader_args_train = dict(shuffle=True, batch_size=64, num_workers=0, pin_memory=True) if cuda else dict(shuffle=True, batch_size=64)
 
 # train dataloader
-train_loader = torch.utils.data.DataLoader(train, **dataloader_args)
+train_loader = torch.utils.data.DataLoader(train, **dataloader_args_train)
 
+dataloader_args_test = dict(shuffle=False, batch_size=1000, num_workers=0, pin_memory=True) if cuda else dict(shuffle=True, batch_size=64)
 # test dataloader
-test_loader = torch.utils.data.DataLoader(test, **dataloader_args)
+test_loader = torch.utils.data.DataLoader(test, **dataloader_args_test)
 
 """# The model
 Let's start with the model we first saw
