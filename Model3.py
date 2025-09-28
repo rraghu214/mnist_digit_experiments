@@ -3,7 +3,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.optim.lr_scheduler import StepLR
 
-dropout_value = 0.05
 padding_value=1
 stride_value=1
 class Net(nn.Module):
