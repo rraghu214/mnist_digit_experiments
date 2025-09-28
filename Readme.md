@@ -5,8 +5,17 @@
 |           |            | **Parameters** | **Best Training Accuracy** | **Best Testing Accuracy** |              |                  |
 | **Model 1** | 1. Skeleton code, 15 epochs <br> 2. Stable model (no overfitting) | **18,422** | **99.28%** | **99.16%** | 1. Consistently improving learning <br> 2. Accuracy > 99% <br> 3. Can reduce params to ~8K | [Logs-Model1](./Logs-Model1.log)  |
 | **Model 2** | 1. Reduce params to ~8K <br> 2. Remove FC <br> 3. Use GAP <br> 4. Optimizer → SGD | **8,682** | **99.55%** | **98.70%** | 1. Slight overfitting <br> 2. Test accuracy dropped <99% <br> 3. Needs tuning to hit 99.4% | [Logs-Model2](./Logs-Model2.log) |
-| **Model 3** | 1. Improve accuracy <br> 2. Use OneCycleLR <br> 3. Add more transforms (RandomAffine etc.) | **8,054** | **98.53%** | **99.13%** | 1. Params reduced from 8682 → 8054 <br> 2. **Performance improved greatly. Model able to touch 99.39% test accuracy** <br> 3. Last 4 epochs consistently >99.26% | [Logs-Model3](./Logs-Model3.log) |
+| **Model 3** | 1. Improve accuracy <br> 2. Use OneCycleLR <br> 3. Add more transforms (RandomAffine etc.) | **8,054** | **98.53%** | **99.13%** | 1. Params reduced from 8682 → 8054 <br> 2. **Performance improved greatly. Model able to touch 99.39% test accuracy** <br> 3. Last 4 epochs consistently >99.26% <br> Learnt about OneCycleLR and its usage with SGD. | [Logs-Model3](./Logs-Model3.log) |
 
+
+# Model-3
+
+
+## Receptive Field Calculations
+
+![RF-Calc-Model3.png](RF-Calc-Model3.png)
+
+[RF-Calculations.xlsx](RF-Calculations.xlsx)
 
 ## Model-3 Performance
 ![Model_3.py](training_results-28092025-2144.png)
