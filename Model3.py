@@ -53,7 +53,7 @@ class Net(nn.Module):
 
 
 
-def get_optimizer_and_scheduler(model, train_loader_len, EPOCHS,lr=0.05, momentum=0.9,):
+def get_optimizer_and_scheduler(model, train_loader_len, EPOCHS,lr=0.01, momentum=0.9,):
     optimizer = torch.optim.SGD(model.parameters(), lr=lr, momentum=momentum,weight_decay=1e-4)
-    scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, max_lr=0.05, steps_per_epoch=train_loader_len, epochs=EPOCHS, anneal_strategy='linear')
+    scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, max_lr=0.015, steps_per_epoch=train_loader_len, epochs=EPOCHS, anneal_strategy='cos',pct_start=0.2,div_factor=10.0,final_div_factor=100.0 )
     return optimizer, scheduler

@@ -12,7 +12,7 @@ from Model3 import Net, get_optimizer_and_scheduler
 train_transforms = transforms.Compose([
                                       #  transforms.Resize((28, 28)),
                                       #  transforms.ColorJitter(brightness=0.10, contrast=0.1, saturation=0.10, hue=0.1),
-                                       transforms.RandomRotation((-7.0, 7.0), fill=(1,)),
+                                       transforms.RandomRotation((-10.0, 10.0), fill=(1,)),
                                        transforms.RandomAffine(degrees=7, translate=(0.05, 0.05), scale=(0.9, 1.1)),
                                        transforms.ToTensor(),
                                        transforms.Normalize((0.1307,), (0.3081,)) # The mean and std have to be sequences (e.g., tuples), therefore you should add a comma after the values.
@@ -49,7 +49,7 @@ if cuda:
     torch.cuda.manual_seed(SEED)
 
 # dataloader arguments - something you'll fetch these from cmdprmt
-dataloader_args = dict(shuffle=True, batch_size=128, num_workers=0, pin_memory=True) if cuda else dict(shuffle=True, batch_size=64)
+dataloader_args = dict(shuffle=True, batch_size=64, num_workers=0, pin_memory=True) if cuda else dict(shuffle=True, batch_size=64)
 
 # train dataloader
 train_loader = torch.utils.data.DataLoader(train, **dataloader_args)
@@ -60,9 +60,6 @@ test_loader = torch.utils.data.DataLoader(test, **dataloader_args)
 """# The model
 Let's start with the model we first saw
 """
-dropout_value = 0.1
-
-
 
 use_cuda = torch.cuda.is_available()
 device = torch.device("cuda" if use_cuda else "cpu")
